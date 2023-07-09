@@ -1,0 +1,14 @@
+A host of a party has invited N &gt; 2 guests to his house. Due to fear of Covid-19 exposure, 
+the host does not wish to open the door of his house multiple times to let guests in. Instead, 
+he wishes that all N guests, even though they may arrive at different times to his door, wait for 
+each other and enter the house all at once. The host and guests are represented by threads in a multithreaded program. 
+Given below is the pseudocode for the host thread, where the host waits for all guests to arrive, then calls openDoor(),
+and signals a condition variable once. You must write the corresponding code for the guest threads.
+The guests must wait for all N of them to arrive and for the host to open the door, and must call enterHouse() only after that. You must ensure that all N waiting guests enter the house after the door is opened. You must use only locks and condition 1 variables for synchronization. 
+The following variables are used in this solution: lock m, condition variables cv host and cv guest,
+and integer guest count (initialized to 0). You must not use any other variables in the guest for synchronization. 
+//host lock(m) 
+while(guest_count &lt; N) 
+wait(cv_host, m)
+openDoor() signal(cv_guest) 
+unlock(m).
